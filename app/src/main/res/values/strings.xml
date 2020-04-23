@@ -4,6 +4,8 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="zero_fragment_label">Zero Fragment</string>
+
     <string name="random_button_text">Random</string>
     <string name="previous">Previous</string>
 
