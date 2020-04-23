@@ -31,13 +31,11 @@ public class ZeroFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.random_button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.next_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView showCountTextView = view.getRootView().findViewById(R.id.textview_first);
-                int currentCount = Integer.parseInt(showCountTextView.getText().toString());
 
-                //NavHostFragment.findNavController(ZeroFragment.this).navigate(R.id.action_ZeroFragment_to_FirstFragment);
+                NavHostFragment.findNavController(ZeroFragment.this).navigate(R.id.action_ZeroFragment_to_FirstFragment);
             }
         });
 
