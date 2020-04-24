@@ -107,9 +107,13 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<GetClassResponse> call, Throwable t) {
-
+                    showFailure();
                 }
             });
+    }
+
+    private void showFailure() {
+        Toast.makeText(getApplicationContext(),"API Error", Toast.LENGTH_SHORT).show();
     }
 
     private void showError() {
