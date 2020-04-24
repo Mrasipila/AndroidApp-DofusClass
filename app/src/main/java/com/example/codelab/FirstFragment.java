@@ -1,5 +1,6 @@
 package com.example.codelab;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 public class FirstFragment extends Fragment {
 
-    TextView showCountTextView;
+    private TextView showCountTextView;
 
     @Override
     public View onCreateView(
@@ -28,14 +29,15 @@ public class FirstFragment extends Fragment {
         return fragmentFirstLayout;
     }
 
+    @SuppressLint("SetTextI18n")
     private void countMe(View view) {
         // Get the value of the text view
         String countString = showCountTextView.getText().toString();
         // Convert value to a number and increment it
-        Integer count = Integer.parseInt(countString);
+        int count = Integer.parseInt(countString);
         count++;
         // Display the new value in the text view.
-        showCountTextView.setText(count.toString());
+        showCountTextView.setText(Integer.toString(count));
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -71,6 +73,12 @@ public class FirstFragment extends Fragment {
             }
         });
 
+        view.findViewById(R.id.previous_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.action_FirstFragment_to_ZeroFragment);
+            }
+        });
 
     }
 }
