@@ -27,8 +27,8 @@ public class ZeroFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        View rootView = inflater.inflate(R.layout.fragment_zero, container, false);
-        recyclerView = rootView.findViewById(R.id.my_recycler_view);
+    //    View rootView = inflater.inflate(R.layout.fragment_zero, container, false);
+     //   recyclerView = rootView.findViewById(R.id.my_recycler_view);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_zero, container, false);
@@ -48,7 +48,7 @@ public class ZeroFragment extends Fragment {
         });
     }
 
-    public void onActivityCreated(Bundle savedInstanceState) {
+ /*   public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         recyclerView.setHasFixedSize(true);
@@ -59,6 +59,5 @@ public class ZeroFragment extends Fragment {
         }// define an adapter
         mAdapter = new MyAdapter(input);
         recyclerView.setAdapter(mAdapter);
-
-    }
+    }*/
 }

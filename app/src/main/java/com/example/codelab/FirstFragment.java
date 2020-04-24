@@ -14,7 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 public class FirstFragment extends Fragment {
 
-    TextView showCountTextView;
+    private TextView showCountTextView;
 
     @Override
     public View onCreateView(
@@ -73,6 +73,12 @@ public class FirstFragment extends Fragment {
             }
         });
 
+        view.findViewById(R.id.previous_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.action_FirstFragment_to_ZeroFragment);
+            }
+        });
 
     }
 }

@@ -19,12 +19,25 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private RecyclerView recyclerView;
+    private MyAdapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //    View rootView = inflater.inflate(R.layout.fragment_zero, container, false);
+        recyclerView = findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        List<String> input = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            input.add("Test" + i);
+        }// define an adapter
+        mAdapter = new MyAdapter(input);
+        recyclerView.setAdapter(mAdapter);
 
     }
 

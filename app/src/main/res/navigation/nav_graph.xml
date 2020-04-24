@@ -47,11 +47,14 @@
 
 
     <!-- Bien joué petit chef, tu es finalement arrivé ici. Je vais t'expliquer
-    comment ça marche. Ta mainactivity.java va gérer ton fragment activity_main.xml
-    qui lui affiche un autre fragment appelé content_main.xml qui te renvoie ici.
-    Le fichier xml de la navigation qui va gérer la connection entre ton activité
-    principale et tout tes fragment -->
+    comment ça marche. Ta mainactivity.java va gérer les elements de activity_main.xml
+    qui lui affiche un autre element appelé content_main.xml qui te renvoie ici.
+    Le fichier xml fragment de la navigation qui va gérer la navigation entre ton activité
+    principale et tout tes fragments -->
+
+    <!-- MainActivity & activity_main formant (tout deux une sorte de fragment de sous-face
+     à tout les autres fragment 0,1,2) c'est ce qu'on appelle une activité -->
 
     <!-- Le fragment est l'outil gérant l'affichage
     l'activité est l'outil gérant le comportement du fragment
-     la vue est l'ensemble des éléments formant le fragment-->
+    la vue est l'ensemble des éléments formant le fragment-->
