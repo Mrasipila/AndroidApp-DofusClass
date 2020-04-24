@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }// define an adapter
         mAdapter = new MyAdapter(input);
         recyclerView.setAdapter(mAdapter);
-
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
