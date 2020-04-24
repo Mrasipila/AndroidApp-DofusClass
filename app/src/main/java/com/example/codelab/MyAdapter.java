@@ -28,8 +28,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ViewHolder(View v) {
             super(v);
             layout = v;
-            txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            txtHeader = v.findViewById(R.id.firstLine);
+            txtFooter = v.findViewById(R.id.secondLine);
         }
     }
 
@@ -51,13 +51,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Create new views (invoked by the layout manager)
     @NotNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        LayoutInflater inflater = LayoutInflater.from(
-                parent.getContext());
-        View v =
-                inflater.inflate(R.layout.row_layout, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View v = inflater.inflate(R.layout.row_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh;
         vh = new ViewHolder(v);

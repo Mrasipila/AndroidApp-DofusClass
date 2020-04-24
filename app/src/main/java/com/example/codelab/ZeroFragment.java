@@ -10,17 +10,25 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ZeroFragment extends Fragment {
 
-    TextView showCountTextView;
+    private RecyclerView recyclerView;
+    private MyAdapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_zero, container, false);
+        recyclerView = rootView.findViewById(R.id.my_recycler_view);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_zero, container, false);
@@ -38,8 +46,19 @@ public class ZeroFragment extends Fragment {
                 NavHostFragment.findNavController(ZeroFragment.this).navigate(R.id.action_ZeroFragment_to_FirstFragment);
             }
         });
+    }
 
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        List<String> input = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            input.add("Test" + i);
+        }// define an adapter
+        mAdapter = new MyAdapter(input);
+        recyclerView.setAdapter(mAdapter);
 
     }
 }
