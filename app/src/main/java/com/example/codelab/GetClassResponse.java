@@ -4,9 +4,9 @@ import java.util.List;
 
 public class GetClassResponse {
 
-    private List<Class> Class;
+    public List<Classes> Classes;
 
-    public List<Class> getClasses() {
-        return Class;
+    public List<Classes> getClasses() {
+        return Classes;
     }
 }
