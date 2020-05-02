@@ -79,7 +79,7 @@ public class ZeroFragment extends Fragment {
                 .setLenient()
                 .create();
 
-        Retrofit retrofit = new retrofit2.Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://raw.githubusercontent.com/Mrasipila/CodeLab/master/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
@@ -95,7 +95,6 @@ public class ZeroFragment extends Fragment {
                     for(Classes i : gameCLasses){
                         System.out.println(i.getFemaleImg());
                     }
-
                     Toast.makeText(getActivity(),"API Success object loaded",Toast.LENGTH_SHORT).show();
                 } else {
                     showError();
