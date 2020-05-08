@@ -26,6 +26,7 @@ public class FirstFragment extends Fragment {
         // Get the count text view
         showCountTextView = fragmentFirstLayout.findViewById(R.id.textview_first);
         // Inflate the layout for this fragment
+
         return fragmentFirstLayout;
     }
 
@@ -81,4 +82,6 @@ public class FirstFragment extends Fragment {
         });
 
     }
+
+
 }

@@ -15,4 +15,6 @@
 
     <string name="StringValue">R</string>
     <string name="previous">Previous</string>
+    <string name="next">next</string>
+    <string name="codelab">CodeLab</string>
 </resources>
