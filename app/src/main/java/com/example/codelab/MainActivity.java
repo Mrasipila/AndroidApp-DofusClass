@@ -1,9 +1,12 @@
 package com.example.codelab;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,13 +31,35 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private SharedPreferences stack;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        stack = getSharedPreferences("mon_stack", Context.MODE_PRIVATE);
 
-        makeApiCall();
+        List<ContainerJSON> B = DataListfromCache();
+        if(B != null){
+            showList(B);
+        } else {
+            makeApiCall();
+        }
+    }
+
+    private List<ContainerJSON> DataListfromCache() {
+        String collection = stack.getString(Constants.KEY_SHARED_PREF_CLASSES,null);
+        if(collection == null){
+            return null;
+        } else {
+            Type ListContainer = new TypeToken<List<ContainerJSON>>() {
+            }.getType();
+            return gson.fromJson(collection, ListContainer);
+        }
     }
 
     private void showList(List<ContainerJSON> from) {
@@ -44,12 +70,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
+    private void saveList(List<ContainerJSON> from){
+        String jsonString = gson.toJson(from);
+        stack.edit().putString("JSON",jsonString).apply();
+        Toast.makeText(getApplicationContext(),"List Saved", Toast.LENGTH_SHORT).show();
+    }
 
     private void makeApiCall(){ ;
-
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(GameAPI.BASE_URL)
@@ -64,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<ContainerJSON>> call, Response<List<ContainerJSON>> response) {
                 if(response.isSuccessful() && response.body() != null){
                     List<ContainerJSON> A = response.body();
+                    saveList(A);
                     showList(A);
                 } else {
                     showError();
