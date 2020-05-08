@@ -3,10 +3,6 @@ package com.example.codelab;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-// Playable Classes of the Game
-
 public class ContainerJSON {
 
 
@@ -40,7 +36,5 @@ public class ContainerJSON {
     public String getFemaleImg() {
         return femaleImg;
     }
-
-  //  public List<String> getRoles() {return roles;}
 
 }
