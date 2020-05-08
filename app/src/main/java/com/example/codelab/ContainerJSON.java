@@ -7,7 +7,7 @@ import java.util.List;
 
 // Playable Classes of the Game
 
-public class Classes {
+public class ContainerJSON {
 
 
     @SerializedName("_id")
@@ -23,7 +23,7 @@ public class Classes {
     private String femaleImg;
    // private List<String> roles;
 
-    public Classes(Integer a, String b, String c) {
+    public ContainerJSON(Integer a, String b, String c) {
       this.id = a;
       this.name = b;
       this.femaleImg = c;
