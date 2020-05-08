@@ -4,7 +4,7 @@ import java.util.List;
 
 class Container {
 
-    static List<ContainerJSON> A;
+    private static List<ContainerJSON> A;
 
     Container(){}
 
@@ -25,7 +25,7 @@ class Container {
         }
     }
 
-    private void showList(){
+    void showList(){
         if(A == null) System.out.println("From Container: List not filled");
 
         for(ContainerJSON i : A) System.out.println(i);
