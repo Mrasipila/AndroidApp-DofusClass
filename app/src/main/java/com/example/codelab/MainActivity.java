@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 18; i++) {
             input.add("Test" + i);
         }// define an adapter
-        mAdapter = new MyAdapter(input);
+        mAdapter = new MyAdapter(new Container().A);
         recyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
@@ -75,50 +75,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-/*    private void makeApiCall(){ ;
-        List<Integer> _id = null;
-        List<String> name = null;
-        List<String> femaleImg = null;
-        List<String[]> roles = null;
-
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://fr.dofus.dofapi.fr/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        GameAPI gerritAPI = retrofit.create(GameAPI.class);
-
-        Call<List<Class>> call = gerritAPI.getClassesInfo(1, null, null);
-        call.enqueue(new Callback<List<Class>>() {
-            @Override
-            public void onResponse(Call<List<Class>> call, Response<List<Class>> response) {
-                int x = 12;
-                if(response.isSuccessful() && response.body() != null){
-                    List<Class> GameCLasses = response.body();
-                    Toast.makeText(getApplicationContext(),"API Success object loaded",Toast.LENGTH_SHORT).show();
-                } else {
-                    showError();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Class>> call, Throwable t) {
-                showFailure();
-            }
-        });
-    }
-
-
-    private void showFailure() {
-        Toast.makeText(getApplicationContext(),"API Error", Toast.LENGTH_SHORT).show();
-    }
-
-    private void showError() {
-        // this <=> getApplicationContext()
-        Toast.makeText(getApplicationContext(),"API Error No object loaded", Toast.LENGTH_SHORT).show();
-    }*/
 }

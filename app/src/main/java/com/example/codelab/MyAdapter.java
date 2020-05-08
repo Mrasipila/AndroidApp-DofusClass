@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private List<String> values;
+    private List<ContainerJSON> values;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -44,7 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    MyAdapter(List<String> myDataset) {
+    MyAdapter(List<ContainerJSON> myDataset) {
         values = myDataset;
     }
 

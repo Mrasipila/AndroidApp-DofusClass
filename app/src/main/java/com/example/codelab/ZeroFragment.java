@@ -1,5 +1,6 @@
 package com.example.codelab;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +9,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
 import java.util.List;
 
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,8 +38,9 @@ public class ZeroFragment extends Fragment {
     //    View rootView = inflater.inflate(R.layout.fragment_zero, container, false);
      //   recyclerView = rootView.findViewById(R.id.my_recycler_view);
        // List<Classes> gameCLasses = null;
-        makeApiCall();
+      //  makeApiCall();
         // Inflate the layout for this fragment
+        getActivity();
         return inflater.inflate(R.layout.fragment_zero, container, false);
     }
 
@@ -57,44 +56,30 @@ public class ZeroFragment extends Fragment {
             }
         });
     }
-    
-    private void makeApiCall(){ ;
- /*       OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        OkHttpClient.Builder builder;
-        builder = httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                Request original = chain.request();
-                Request request = original.newBuilder()
-                        .header("secret-key", "$2b$10$eThJXHlFBoDfhudoP0VTMe6XIWYKYpL.bb1zRFMeAYEltv1u5EB8O")
-                        .method(original.method(), original.body())
-                        .build();
-                return chain.proceed(request);
-            }
-        }
 
-        OkHttpClient client = httpClient.build();*/
+    public FragmentActivity getZeroFragActivity(){
+        return getActivity();
+    }
+  /*  private void makeApiCall(){ ;
 
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://raw.githubusercontent.com/Mrasipila/CodeLab/master/")
+                .baseUrl(GameAPI.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         GameAPI gerritAPI = retrofit.create(GameAPI.class);
 
-        Call<List<Classes>> call = gerritAPI.getClassesInfo();
-        call.enqueue(new Callback<List<Classes>>() {
+        Call<List<ContainerJSON>> call = gerritAPI.getClassesInfo();
+        call.enqueue(new Callback<List<ContainerJSON>>() {
             @Override                                           
-            public void onResponse(Call<List<Classes>> call, Response<List<Classes>> response) {
+            public void onResponse(Call<List<ContainerJSON>> call, Response<List<ContainerJSON>> response) {
                 if(response.isSuccessful() && response.body() != null){
-                    List<Classes> gameCLasses = response.body();
-                    for(Classes i : gameCLasses){
-                        System.out.println(i.getFemaleImg());
-                    }
+                    List<ContainerJSON> gameCLasses = response.body();
+
                     Toast.makeText(getActivity(),"API Success object loaded",Toast.LENGTH_SHORT).show();
                 } else {
                     showError();
@@ -102,7 +87,7 @@ public class ZeroFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Classes>> call, Throwable t) {
+            public void onFailure(Call<List<ContainerJSON>> call, Throwable t) {
                 showFailure();
             }
         });
@@ -116,7 +101,7 @@ public class ZeroFragment extends Fragment {
     private void showError() {
         // this <=> getApplicationContext()
         Toast.makeText(getActivity(),"API Error No object loaded", Toast.LENGTH_SHORT).show();
-    }
+    }*/
  /*   public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
