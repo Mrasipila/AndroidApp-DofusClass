@@ -13,8 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Query;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,19 +33,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      // showList();
         makeApiCall();
     }
 
     private void showList(List<ContainerJSON> from) {
-        //View rootView = inflater.inflate(R.layout.fragment_zero, container, false);
         recyclerView = findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 18; i++) {
-            input.add("Test" + i);
-        }// define an adapter
         mAdapter = new MyAdapter(from);
         recyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
