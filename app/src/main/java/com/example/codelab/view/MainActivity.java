@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MyAdapter mAdapter = new MyAdapter(from, item -> controller.onItemClick(item));
         recyclerView.setAdapter(mAdapter);
+        controller.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -82,11 +83,9 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main,menu);
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) menuItem.getActionView();
-//        searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
-
+        controller.setSearchViewAndListener(searchView);
         return true;
     }
-
 
     public void navigateToDetails(ContainerJSON item) {
         Intent myIntent = new Intent(MainActivity.this, DetailsActivity.class);

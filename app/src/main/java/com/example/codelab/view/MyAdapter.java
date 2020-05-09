@@ -24,10 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private final List<ContainerJSON> values;
-    private int expandedPosition = -1;
+    private List<ContainerJSON> values;
+ //   private int expandedPosition = -1;
     private final OnItemClickListener listener;
-    private AdapterController Ad_controller;
+ //   private AdapterController Ad_controller;
 
     public interface OnItemClickListener {
         void onItemClick(ContainerJSON item);
@@ -132,8 +132,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return values.size();
     }
 
-   /* public void updateList(List<String> from){
-        names = new ArrayList<>()
-    }*/
+    public void updateList(List<ContainerJSON> from){
+        values.clear();
+        for(ContainerJSON i : from){
+            values.add(i);
+        }
+        notifyDataSetChanged();
+    }
 
 }
