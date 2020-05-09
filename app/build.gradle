@@ -37,10 +37,13 @@ dependencies {
     def nav_version = "2.3.0-alpha05"
 
     // Java language implementation
+    //noinspection GradleDependency
     implementation "androidx.navigation:navigation-fragment:$nav_version"
+    //noinspection GradleDependency
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
     // Dynamic Feature Module Support
+    //noinspection GradleDependency
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
 
     // Testing Navigation
@@ -56,6 +59,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation "com.squareup.okhttp3:okhttp:4.6.0"
+
+    // Glide for images
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }
 
 

@@ -1,13 +1,21 @@
 package com.example.codelab;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -15,6 +23,7 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<ContainerJSON> values;
+    private int expandedPosition = -1;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -23,6 +32,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // each data item is just a string in this case
         TextView txtHeader;
         TextView txtFooter;
+        ImageView img;
+        View subitem;
         View layout;
 
         ViewHolder(View v) {
@@ -30,6 +41,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             layout = v;
             txtHeader = v.findViewById(R.id.firstLine);
             txtFooter = v.findViewById(R.id.secondLine);
+            img = v.findViewById(R.id.icon);
+            subitem = v.findViewById(R.id.llExpandArea);
         }
     }
 
@@ -62,6 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Replace the contents of a view (invoked by the layout manager)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
@@ -69,14 +83,38 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final ContainerJSON C = values.get(position);
         holder.txtHeader.setText(C.getName());
+
+        if (position == expandedPosition) {
+            holder.subitem.setVisibility(View.VISIBLE);
+        } else {
+            holder.subitem.setVisibility(View.GONE);
+        }
+        holder.subitem.setActivated(C.getExpanded());
+
         holder.txtHeader.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(position);
+                // Check for an expanded view, collapse if you find one
+               if (expandedPosition >= 0) {
+                    int prev = expandedPosition;
+                    notifyItemChanged(prev);
+                }
+                // Set the current position to "expanded"
+                expandedPosition = holder.getAdapterPosition();
+                notifyItemChanged(expandedPosition);
+
             }
         });
 
-        holder.txtFooter.setText("Footer: " + C.get_id());
+        holder.txtFooter.setText(String.join(" ",C.getRoles()));
+
+
+        final ImageView myImageView;
+        Glide.with(holder.img.getContext())
+                .load(C.getFemaleImg())
+                .centerCrop()
+                .apply(new RequestOptions().override(96, 96))
+                .into(holder.img);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -2,16 +2,19 @@ package com.example.codelab;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private SharedPreferences stack;
+    private SharedPreferences SPcache;
     private Gson gson;
 
     @Override
@@ -41,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
         gson = new GsonBuilder()
                 .setLenient()
                 .create();
-        stack = getSharedPreferences("mon_stack", Context.MODE_PRIVATE);
+        SPcache = getSharedPreferences("mon_stack", Context.MODE_PRIVATE);
 
         List<ContainerJSON> B = DataListfromCache();
+       // makeApiCall();
         if(B != null){
             showList(B);
         } else {
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<ContainerJSON> DataListfromCache() {
-        String collection = stack.getString(Constants.KEY_SHARED_PREF_CLASSES,null);
+        String collection = SPcache.getString(Constants.KEY_SHARED_PREF_CLASSES,null);
         if(collection == null){
             return null;
         } else {
@@ -72,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void saveList(List<ContainerJSON> from){
         String jsonString = gson.toJson(from);
-        stack.edit().putString("JSON",jsonString).apply();
+        SPcache.edit().putString("JSON",jsonString).apply();
         Toast.makeText(getApplicationContext(),"List Saved", Toast.LENGTH_SHORT).show();
     }
 

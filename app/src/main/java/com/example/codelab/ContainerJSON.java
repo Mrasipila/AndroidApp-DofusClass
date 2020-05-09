@@ -3,12 +3,14 @@ package com.example.codelab;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class ContainerJSON {
 
 
-    @SerializedName("_id")
+    @SerializedName("roles")
     @Expose(deserialize = true)
-    private Integer id;
+    private List<String> roles;
 
     @SerializedName("name")
     @Expose(deserialize = true)
@@ -17,16 +19,17 @@ public class ContainerJSON {
     @SerializedName("femaleImg")
     @Expose(deserialize = true)
     private String femaleImg;
-   // private List<String> roles;
 
-    public ContainerJSON(Integer a, String b, String c) {
-      this.id = a;
+    private boolean expanded = true;
+
+    public ContainerJSON(List<String> a, String b, String c) {
+      this.roles = a;
       this.name = b;
       this.femaleImg = c;
     }
 
-    public Integer get_id() {
-        return id;
+    public List<String> getRoles() {
+        return roles;
     }
 
     public String getName() {
@@ -35,6 +38,14 @@ public class ContainerJSON {
 
     public String getFemaleImg() {
         return femaleImg;
+    }
+
+    public boolean getExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean to){
+        this.expanded = to;
     }
 
 }
