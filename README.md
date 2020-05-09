@@ -8,7 +8,7 @@ Membre: Meyssan KANZARI
 
 ### Prérequis
 
--Installation d'Android Studio
+-Installation d'Android Studio </br>
 -Récupérer ma branche master
 
     ```
@@ -28,8 +28,6 @@ Membre: Meyssan KANZARI
 ### Images du Projet
 
 
-
-
  <div>
     <div class="inline-block">
         <img src="img/img/Capture d’écran 2020-05-10 à 00.43.24.png" width="300" height="470">
@@ -37,6 +35,8 @@ Membre: Meyssan KANZARI
     <div class="inline-block">
         <img src ="img/img/Capture d’écran 2020-05-10 à 00.47.08.png" width="300" height="470">
     </div>
+</div>
+<div>
     <div class="inline-block">
         <img src ="img/img/Capture d’écran 2020-05-10 à 00.44.02.png" width="300" height="470">
     </div>
