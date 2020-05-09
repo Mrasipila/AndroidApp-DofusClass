@@ -93,14 +93,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         final ContainerJSON C = values.get(position);
         holder.txtHeader.setText(C.getName());
 
-        if (position == expandedPosition) {
+     /*   if (position == expandedPosition) {
             holder.sub_item.setVisibility(View.VISIBLE);
         } else {
             holder.sub_item.setVisibility(View.GONE);
         }
         holder.sub_item.setActivated(C.getExpanded());
 
-    /*    holder.txtHeader.setOnClickListener(v -> {
+          holder.txtHeader.setOnClickListener(v -> {
           //  int prev = Ad_controller.Start(holder.getAdapterPosition(),expandedPosition);
 
             if (expandedPosition >= 0) {

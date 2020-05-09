@@ -20,12 +20,17 @@ public class ContainerJSON {
  //   @Expose(deserialize = true)
     private String femaleImg;
 
+    @SerializedName("description")
+    @Expose(deserialize = true)
+    private String description;
+
     private boolean expanded = true;
 
-    public ContainerJSON(List<String> a, String b, String c) {
+    public ContainerJSON(List<String> a, String b, String c, String d) {
       this.roles = a;
       this.name = b;
       this.femaleImg = c;
+      this.description = d;
     }
 
     public List<String> getRoles() {
@@ -42,6 +47,10 @@ public class ContainerJSON {
 
     public boolean getExpanded() {
         return expanded;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setExpanded(boolean to){

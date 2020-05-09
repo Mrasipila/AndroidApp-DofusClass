@@ -96,7 +96,7 @@ public class MainController  implements SearchView.OnQueryTextListener {
         List<String> newList = new ArrayList<>();
         List<ContainerJSON> A = DataListfromCache();
 
-        for(ContainerJSON i : A){
+        for(ContainerJSON i : A) {
 
         }
 

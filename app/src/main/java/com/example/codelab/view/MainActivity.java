@@ -1,6 +1,7 @@
 package com.example.codelab.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void navigateToDetails(ContainerJSON item) {
-        Toast.makeText(getApplicationContext(),"Navigate", Toast.LENGTH_SHORT).show();
+        Intent myIntent = new Intent(MainActivity.this, DetailsActivity.class);
+        myIntent.putExtra("item",Injection.getGs().toJson(item));
+        MainActivity.this.startActivity(myIntent);
     }
 }
