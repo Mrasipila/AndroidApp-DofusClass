@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.example.codelab.Constants;
 import com.example.codelab.GameAPI;
+import com.example.codelab.Injection;
 import com.example.codelab.model.ContainerJSON;
 import com.example.codelab.view.MainActivity;
 import com.google.gson.Gson;
@@ -54,14 +55,7 @@ public class MainController {
 
     private void makeApiCall(){
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(GameAPI.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        GameAPI gerritAPI = retrofit.create(GameAPI.class);
-
-        Call<List<ContainerJSON>> call = gerritAPI.getClassesInfo();
+        Call<List<ContainerJSON>> call = Injection.My_Api().getClassesInfo();
         call.enqueue(new Callback<List<ContainerJSON>>() {
             @Override
             public void onResponse(Call<List<ContainerJSON>> call, Response<List<ContainerJSON>> response) {

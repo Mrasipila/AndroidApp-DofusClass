@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.codelab.Constants;
 import com.example.codelab.GameAPI;
+import com.example.codelab.Injection;
 import com.example.codelab.R;
 import com.example.codelab.controller.MainController;
 import com.example.codelab.model.ContainerJSON;
@@ -37,7 +38,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MainController controller = new MainController(this, new GsonBuilder().setLenient().create(), getSharedPreferences("mon_stack", Context.MODE_PRIVATE));
+        MainController controller = new MainController(
+                this,
+                Injection.getGs(),
+                Injection.getSP(getApplicationContext())
+        );
         controller.onStart();
     }
 
