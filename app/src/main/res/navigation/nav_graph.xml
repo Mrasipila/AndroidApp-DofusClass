@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/ZeroFragment"
-        android:name="com.example.codelab.ZeroFragment"
+        android:name="com.example.codelab.view.ZeroFragment"
         android:label="@string/zero_fragment_label"
         tools:layout="@layout/fragment_zero">
 
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.codelab.FirstFragment"
+        android:name="com.example.codelab.view.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.codelab.SecondFragment"
+        android:name="com.example.codelab.view.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 

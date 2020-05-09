@@ -1,5 +1,6 @@
-package com.example.codelab;
+package com.example.codelab.view;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.codelab.R;
+//import com.example.codelab.SecondFragmentArgs;
 
 import java.util.Random;
 
@@ -23,28 +27,25 @@ public class SecondFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_second, container, false);
     }
 
+    @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Integer myArg = SecondFragmentArgs.fromBundle(getArguments()).getMyArg();
-
-        Integer count = myArg;
+        assert getArguments() != null;
+        int count;
+        count = SecondFragmentArgs.fromBundle(getArguments()).getMyArg();
         Random random = new java.util.Random();
-        Integer randomNumber = 0;
+        int randomNumber;
+        randomNumber = 0;
         if (count > 0) {
             randomNumber = random.nextInt(count + 1);
         }
 
         TextView randomView = view.getRootView().findViewById(R.id.textview_random);
-        randomView.setText(randomNumber.toString());
+        randomView.setText(Integer.toString(randomNumber));
 
-        view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
+        view.findViewById(R.id.button_second).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+                .navigate(R.id.action_SecondFragment_to_FirstFragment));
     }
 
 }

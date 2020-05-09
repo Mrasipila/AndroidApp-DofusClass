@@ -1,17 +1,16 @@
-package com.example.codelab;
+package com.example.codelab.view;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.codelab.R;
 
 
 public class ZeroFragment extends Fragment {
@@ -34,11 +33,6 @@ public class ZeroFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.next_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ZeroFragment.this).navigate(R.id.action_ZeroFragment_to_FirstFragment);
-            }
-        });
+        view.findViewById(R.id.next_button).setOnClickListener(view1 -> NavHostFragment.findNavController(ZeroFragment.this).navigate(R.id.action_ZeroFragment_to_FirstFragment));
     }
 }

@@ -1,4 +1,4 @@
-package com.example.codelab;
+package com.example.codelab.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,15 +9,15 @@ public class ContainerJSON {
 
 
     @SerializedName("roles")
-    @Expose(deserialize = true)
+ //   @Expose(deserialize = true)
     private List<String> roles;
 
     @SerializedName("name")
-    @Expose(deserialize = true)
+ //   @Expose(deserialize = true)
     private String name;
 
     @SerializedName("femaleImg")
-    @Expose(deserialize = true)
+ //   @Expose(deserialize = true)
     private String femaleImg;
 
     private boolean expanded = true;

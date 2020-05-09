@@ -1,14 +1,12 @@
-package com.example.codelab;
+package com.example.codelab.view;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -16,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.codelab.R;
+import com.example.codelab.model.ContainerJSON;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -33,7 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         TextView txtHeader;
         TextView txtFooter;
         ImageView img;
-        View subitem;
+        View sub_item;
         View layout;
 
         ViewHolder(View v) {
@@ -42,7 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             txtHeader = v.findViewById(R.id.firstLine);
             txtFooter = v.findViewById(R.id.secondLine);
             img = v.findViewById(R.id.icon);
-            subitem = v.findViewById(R.id.llExpandArea);
+            sub_item = v.findViewById(R.id.llExpandArea);
         }
     }
 
@@ -85,25 +85,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.txtHeader.setText(C.getName());
 
         if (position == expandedPosition) {
-            holder.subitem.setVisibility(View.VISIBLE);
+            holder.sub_item.setVisibility(View.VISIBLE);
         } else {
-            holder.subitem.setVisibility(View.GONE);
+            holder.sub_item.setVisibility(View.GONE);
         }
-        holder.subitem.setActivated(C.getExpanded());
+        holder.sub_item.setActivated(C.getExpanded());
 
-        holder.txtHeader.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Check for an expanded view, collapse if you find one
-               if (expandedPosition >= 0) {
-                    int prev = expandedPosition;
-                    notifyItemChanged(prev);
-                }
-                // Set the current position to "expanded"
-                expandedPosition = holder.getAdapterPosition();
-                notifyItemChanged(expandedPosition);
-
+        holder.txtHeader.setOnClickListener(v -> {
+            // Check for an expanded view, collapse if you find one
+           if (expandedPosition >= 0) {
+                int prev = expandedPosition;
+                notifyItemChanged(prev);
             }
+            // Set the current position to "expanded"
+            expandedPosition = holder.getAdapterPosition();
+            notifyItemChanged(expandedPosition);
+
         });
 
         holder.txtFooter.setText(String.join(" ",C.getRoles()));
