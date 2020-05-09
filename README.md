@@ -8,8 +8,9 @@ Membre: Meyssan KANZARI
 
 ### Prérequis
 
-    Installation d'Android Studio
-    Récupérer ma branche master
+-Installation d'Android Studio
+-Récupérer ma branche master
+
     ```
     https://github.com/Mrasipila/CodeLab.git
     ```
@@ -20,6 +21,7 @@ Membre: Meyssan KANZARI
 - GitFlow
 - Image Loading with Glide
 - Deserialisation with GSON
+- Singleton
 - Barre de recherche ~
 
 
@@ -27,7 +29,26 @@ Membre: Meyssan KANZARI
 
 
 
+
+ <div>
+    <div class="inline-block">
+        <img src="img/img/Capture d’écran 2020-05-10 à 00.43.24.png" width="300" height="470">
+    </div>
+    <div class="inline-block">
+        <img src ="img/img/Capture d’écran 2020-05-10 à 00.47.08.png" width="300" height="470">
+    </div>
+    <div class="inline-block">
+        <img src ="img/img/Capture d’écran 2020-05-10 à 00.44.02.png" width="300" height="470">
+    </div>
+    <div class="inline-block">
+        <img src ="img/img/Capture d’écran 2020-05-10 à 00.45.12.png" width="300" height="415">
+    </div>
+</div>
+
+
+
 ## Fait avec
+
 
 * [Glide](https://github.com/bumptech/glide) - Loading Image From Fetched Url
 * [Retrofit2](https://github.com/square/retrofit) - Fetched API Information 
