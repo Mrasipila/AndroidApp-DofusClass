@@ -1,6 +1,7 @@
 package com.example.codelab.controller;
 
 import android.content.SharedPreferences;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.codelab.Constants;
@@ -12,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -20,7 +22,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainController {
+public class MainController  implements SearchView.OnQueryTextListener {
 
 
     private SharedPreferences SP_cache;
@@ -82,12 +84,30 @@ public class MainController {
         Toast.makeText(view.getApplicationContext(),"List Saved", Toast.LENGTH_SHORT).show();
     }
 
-    public void onItemClick(){
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
 
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        String userInput = newText.toLowerCase();
+        List<String> newList = new ArrayList<>();
+        List<ContainerJSON> A = DataListfromCache();
+
+        for(ContainerJSON i : A){
+
+        }
+
+        return false;
+    }
+
+    public void onItemClick(ContainerJSON item){
+        view.navigateToDetails(item);
     }
 
     public void onButtonClick(){
 
     }
-
 }
