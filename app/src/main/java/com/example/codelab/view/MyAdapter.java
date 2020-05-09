@@ -15,15 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.codelab.R;
+import com.example.codelab.controller.AdapterController;
 import com.example.codelab.model.ContainerJSON;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<ContainerJSON> values;
-    private int expandedPosition = -1;
+ //   private int expandedPosition = -1;
+    private final OnItemClickListener listener;
+ //   private AdapterController Ad_controller;
+
+    public interface OnItemClickListener {
+        void onItemClick(ContainerJSON item);
+    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -57,8 +65,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    MyAdapter(List<ContainerJSON> myDataset) {
-        values = myDataset;
+    MyAdapter(List<ContainerJSON> myDataset, OnItemClickListener listener) {
+        this.values = myDataset;
+        this.listener = listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -84,24 +93,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         final ContainerJSON C = values.get(position);
         holder.txtHeader.setText(C.getName());
 
-        if (position == expandedPosition) {
+     /*   if (position == expandedPosition) {
             holder.sub_item.setVisibility(View.VISIBLE);
         } else {
             holder.sub_item.setVisibility(View.GONE);
         }
         holder.sub_item.setActivated(C.getExpanded());
 
-        holder.txtHeader.setOnClickListener(v -> {
-            // Check for an expanded view, collapse if you find one
-           if (expandedPosition >= 0) {
+          holder.txtHeader.setOnClickListener(v -> {
+          //  int prev = Ad_controller.Start(holder.getAdapterPosition(),expandedPosition);
+
+            if (expandedPosition >= 0) {
                 int prev = expandedPosition;
                 notifyItemChanged(prev);
             }
             // Set the current position to "expanded"
             expandedPosition = holder.getAdapterPosition();
             notifyItemChanged(expandedPosition);
-
         });
+*/
 
         holder.txtFooter.setText(String.join(" ",C.getRoles()));
 
@@ -112,12 +122,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 .centerCrop()
                 .apply(new RequestOptions().override(96, 96))
                 .into(holder.img);
+
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(C));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return values.size();
+    }
+
+    public void updateList(List<ContainerJSON> from){
+        values.clear();
+        for(ContainerJSON i : from){
+            values.add(i);
+        }
+        notifyDataSetChanged();
     }
 
 }

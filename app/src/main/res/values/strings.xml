@@ -18,4 +18,5 @@
     <string name="next">next</string>
     <string name="codelab">CodeLab</string>
     <string name="i_saw_you_clicking">I saw you clicking!</string>
+    <string name="description">Description :</string>
 </resources>
