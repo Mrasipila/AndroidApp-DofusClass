@@ -22,7 +22,7 @@ Membre: Meyssan KANZARI
 - Image Loading with Glide
 - Deserialisation with GSON
 - Singleton
-- Barre de recherche ~
+- Barre de recherche 
 
 
 ### Images du Projet
