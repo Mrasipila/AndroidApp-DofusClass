@@ -17,7 +17,7 @@ Membre: Meyssan KANZARI
 
 ### Consignes respectées :
 
-- Architecture MVP
+- Architecture MVC
 - GitFlow
 - Image Loading with Glide
 - Deserialisation with GSON
