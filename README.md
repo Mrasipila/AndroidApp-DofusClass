@@ -52,7 +52,7 @@ Membre: Meyssan KANZARI
 
 * [Glide](https://github.com/bumptech/glide) - Loading Image From Fetched Url
 * [Retrofit2](https://github.com/square/retrofit) - Fetched API Information 
-* [Android Studio]
+* Android Studio
 
 
 ## Acknowledgments
